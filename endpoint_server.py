@@ -13,11 +13,11 @@ app.config['MAX_CONTENT_LENGTH'] = 10 * 1024 * 1024 * 1024  # 10GB limit
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
-    if 'file' not in request.files:
+    if 'file' not in request.data:
         print("No file part in the request.")
         return "No file part in the request.", 400
 
-    file = request.files['file']
+    file = request.data['file']
 
     if file.filename == '':
         print("No selected file.")
